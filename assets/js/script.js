@@ -12,6 +12,13 @@ document.addEventListener("DOMContentLoaded", function(){
         })
     }
 
+/* Add listener for Enter key (as alternative to mouse click)  */
+    document.getElementById("answer-box").addEventListener("keydown", function(event){
+        if (event.key === "Enter"){
+            checkAnswer();
+        }    
+    })
+
     runGame("add"); /* start game is "add" */
 })
 
@@ -20,9 +27,13 @@ document.addEventListener("DOMContentLoaded", function(){
  * and after the user's answer has been porcessed
 */
 function runGame(gameType){
+/* Clear answer-box and set focus */
+    document.getElementById("answer-box").value="";
+    document.getElementById("answer-box").focus();
+
+/* Create 2 random numbers between 1-25 (inclusive) */    
     let num1 = Math.floor(Math.random()*25) + 1;
     let num2 = Math.floor(Math.random()*25) + 1;
-    document.getElementById("answer-box").value=null;
 
     switch(gameType){
         case "add":
